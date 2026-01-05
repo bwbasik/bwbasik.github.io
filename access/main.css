@@ -917,7 +917,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk8AAAUACAY
     bottom: 10px;          /* от нижнего края карточки */
     left: 10px;            /* отступ слева */
     right: 10px;           /* отступ справа */
-    height: 20px;          /* высота полоски */
+    height: 60px;          /* высота полоски */
     background: linear-gradient(90deg, #B6EB9F, #9CCFCF); /* цвет полоски */
     border-radius: 4px;
     padding: 2px 5px;
