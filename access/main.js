@@ -1,36 +1,23 @@
 scrollLock.disablePageScroll();
 
 var date = new Date();
-
+var month = date.getMonth();
 var arr = [
-  'січня',
-  'лютого',
-  'березня',
-  'квітня',
-  'травня',
-  'червня',
-  'липня',
-  'серпня',
-  'вересня',
-  'жовтня',
-  'листопада',
-  'грудня'
+   'січня',
+   'лютого',
+   'березня',
+   'квітня',
+   'травня',
+   'червня',
+   'липня',
+   'серпня',
+   'вересня',
+   'жовтня',
+	 'листопада',
+	 'грудня',
 ];
 
-var minutes = date.getMinutes();
-if (minutes < 10) minutes = '0' + minutes;
-
-var hours = date.getHours();
-if (hours < 10) hours = '0' + hours;
-
-$('.rf_title').text(
-  'Данi оновлено ' +
-  date.getDate() + ' ' +
-  arr[date.getMonth()] + ' ' +
-  date.getFullYear() + ' о ' +
-  hours + ':' + minutes
-);
-
+$('.rf_title').text('Данi оновлено ' + date.getDate() + ' ' + arr[month-1] + ' ' + date.getFullYear() +' о ' + (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + '' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()));
 
 $('html').css('background', 'linear-gradient(90deg, #aabce8, #cfc6e5, #e2c6e6)');
 
@@ -146,36 +133,22 @@ $('.icon.men').on('click', function () {
 });
 
 
-function initMarquee() {
-  $('.js-marquee').each(function () {
+$(function () {
+	$('.line').marquee({
 
-    if ($(this).hasClass('marquee-initialized')) return;
+		allowCss3Support: true,
+		css3easing: 'linear',
+		easing: 'linear',
+		delayBeforeStart: 0,
+		direction: 'left',
+		duplicated: true,
+		gap: 50,
+		pauseOnCycle: false,
+		pauseOnHover: false,
+		startVisible: false
 
-    $(this).marquee({
-      allowCss3Support: true,
-      css3easing: 'linear',
-      easing: 'linear',
-      delayBeforeStart: 0,
-      direction: 'left',
-      duplicated: true,
-      gap: 50,
-      pauseOnCycle: false,
-      pauseOnHover: false,
-      startVisible: false
-    });
-
-    $(this).addClass('marquee-initialized');
-  });
-}
-
-// первый запуск
-initMarquee();
-
-// при каждом свайпе
-swiper.on('slideChangeTransitionEnd', function () {
-  initMarquee();
+	});
 });
-
 
 var swiper = new Swiper(".swiper-container", {
 	effect: "coverflow",
